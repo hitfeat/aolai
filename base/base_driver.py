@@ -15,10 +15,13 @@ def init_driver():
     # 需要启动的程序的界面名
     desired_caps['appActivity'] = 'com.yunmall.ymctoc.ui.activity.MainActivity'
 
+    # 使用 查找toast
+    desired_caps['automationName'] = 'Uiautomator2'
+
     # # 不需要重置应用
     # desired_caps['noReset'] = True
 
     # 连接appium服务器
-    driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+    driver = webdriver.Remote('http://192.168.1.64:4723/wd/hub', desired_caps)
 
     return driver
