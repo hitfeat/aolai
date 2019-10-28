@@ -13,7 +13,7 @@ from page.reg_page import RegPage
 class TestLogin:
 
     def setup(self):
-        self.driver = init_driver()
+        self.driver = init_driver(False)
         self.page = Page(self.driver)
         self.driver.implicitly_wait(10)
 

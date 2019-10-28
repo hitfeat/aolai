@@ -1,7 +1,7 @@
 from appium import webdriver
 
 
-def init_driver():
+def init_driver(no_reset=True):
     # 创建一个字典，包装相应的启动参数
     desired_caps = dict()
     # 需要连接的手机的平台(不限制大小写)
@@ -19,7 +19,7 @@ def init_driver():
     desired_caps['automationName'] = 'Uiautomator2'
 
     # # 不需要重置应用
-    # desired_caps['noReset'] = True
+    desired_caps['noReset'] = no_reset
 
     # 连接appium服务器
     driver = webdriver.Remote('http://192.168.1.64:4723/wd/hub', desired_caps)
