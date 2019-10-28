@@ -1,7 +1,6 @@
 from appium import webdriver
 
 
-
 def init_driver():
     # 创建一个字典，包装相应的启动参数
     desired_caps = dict()
@@ -16,8 +15,8 @@ def init_driver():
     # 需要启动的程序的界面名
     desired_caps['appActivity'] = 'com.yunmall.ymctoc.ui.activity.MainActivity'
 
-    # 不需要重置应用
-    desired_caps['noReset'] = True
+    # # 不需要重置应用
+    # desired_caps['noReset'] = True
 
     # 连接appium服务器
     driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)

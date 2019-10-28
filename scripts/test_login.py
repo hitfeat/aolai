@@ -3,6 +3,7 @@ from appium import webdriver
 from base.base_driver import init_driver
 from page.home_page import HomePage
 from page.login_page import LoginPage
+from page.me_page import MePage
 from page.reg_page import RegPage
 
 
@@ -14,6 +15,7 @@ class TestLogin:
         self.home_page = HomePage(self.driver)
         self.login_page = LoginPage(self.driver)
         self.reg_page = RegPage(self.driver)
+        self.me_page = MePage(self.driver)
 
     def test_login(self):
         # 首页 点击 我
@@ -26,3 +28,6 @@ class TestLogin:
         self.login_page.input_password("itfeat123000")
         # 登陆 点击 登陆
         self.login_page.click_login()
+
+        # 断言
+        assert self.me_page.get_username() == "itfeat"
