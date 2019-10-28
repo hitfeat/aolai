@@ -15,7 +15,9 @@ class TestLogin:
     def setup(self):
         self.driver = init_driver(False)
         self.page = Page(self.driver)
-        self.driver.implicitly_wait(10)
+
+    def test_hello(self):
+        self.page.home.login_if_not(self.page)
 
     @pytest.mark.parametrize("args", analyze_data("login_data.yaml", "test_login"))
     def test_login(self, args):
