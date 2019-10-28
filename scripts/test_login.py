@@ -4,6 +4,7 @@ from base.base_driver import init_driver
 from page.home_page import HomePage
 from page.login_page import LoginPage
 from page.me_page import MePage
+from page.page import Page
 from page.reg_page import RegPage
 
 
@@ -11,23 +12,41 @@ class TestLogin:
 
     def setup(self):
         self.driver = init_driver()
+        self.page = Page(self.driver)
 
-        self.home_page = HomePage(self.driver)
-        self.login_page = LoginPage(self.driver)
-        self.reg_page = RegPage(self.driver)
-        self.me_page = MePage(self.driver)
+        # self.home_page = HomePage(self.driver)
+        # self.login_page = LoginPage(self.driver)
+        # self.reg_page = RegPage(self.driver)
+        # self.me_page = MePage(self.driver)
 
     def test_login(self):
+
         # 首页 点击 我
-        self.home_page.click_me()
+        self.page.home.click_me()
         # 注册 点击 已有账号去登陆
-        self.reg_page.click_go_to_login()
+        self.page.reg.click_go_to_login()
         # 登陆 输入 用户名
-        self.login_page.input_username("itfeat")
+        self.page.login.input_username("itfeat")
         # 登陆 输入 密码
-        self.login_page.input_password("itfeat123000")
+        self.page.login.input_password("itfeat123000")
         # 登陆 点击 登陆
-        self.login_page.click_login()
+        self.page.login.click_login()
 
         # 断言
-        assert self.me_page.get_username() == "itfeat"
+        assert self.page.me.get_username() == "itfeat"
+
+
+
+        # # 首页 点击 我
+        # self.home_page.click_me()
+        # # 注册 点击 已有账号去登陆
+        # self.reg_page.click_go_to_login()
+        # # 登陆 输入 用户名
+        # self.login_page.input_username("itfeat")
+        # # 登陆 输入 密码
+        # self.login_page.input_password("itfeat123000")
+        # # 登陆 点击 登陆
+        # self.login_page.click_login()
+        #
+        # # 断言
+        # assert self.me_page.get_username() == "itfeat"
