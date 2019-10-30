@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -99,3 +101,19 @@ class BaseAction:
                     print("到底了")
                     break
                 page_source = self.driver.page_source
+
+    def is_keyword_in_page_source(self, keyword, timeout=10.0, poll=1.0):
+        """
+        在超时时间范围内，按照 poll ，找 "keyword" 是否在 page_source 中
+        :param keyword: 关键字
+        :param timeout: 超时时间
+        :param poll: 频率
+        :return:
+        """
+        end_time =time.time() + timeout
+        while True:
+            if keyword in self.driver.page_source:
+                return True
+            if time.time() > end_time:  # 当前时间是否超过了结束时间
+                return False
+            time.sleep(poll)
