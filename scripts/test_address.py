@@ -45,7 +45,7 @@ class TestAddress:
             assert self.page.edit_address.is_toast_exist(toast)
 
     def test_edit_address(self):
-        # 如果没有登录则登录，此时会停留在"我"的页面
+               # 如果没有登录则登录，此时会停留在"我"的页面
         self.page.home.login_if_not(self.page)
         # 我 点击 设置
         self.page.me.click_setting()
@@ -71,5 +71,28 @@ class TestAddress:
 
         assert self.page.address_list.is_toast_exist("保存成功")
         assert self.page.address_list.get_default_receipt_name_text() == "%s  %s" % ("李四123", "18888888888")
+
+    def test_delete_address(self):
+        # 如果没有登录则登录，此时会停留在"我"的页面
+        self.page.home.login_if_not(self.page)
+        # 我 点击 设置
+        self.page.me.click_setting()
+        self.page.setting.click_address()
+        if not self.page.address_list.is_default_exist():  # 如果不存在，添加地址
+            self.page.address_list.click_new_address()
+            self.page.edit_address.input_name("李四")
+            self.page.edit_address.input_phone("17777777777")
+            self.page.edit_address.input_detail("二单元 305")
+            self.page.edit_address.input_postal_code("100000")
+            self.page.edit_address.click_default()
+            self.page.edit_address.click_region()
+            self.page.edit_address.click_save()
+
+        self.page.address_list.delete_all_address()
+
+        assert not self.page.address_list.is_default_exist()
+
+
+
 
 
