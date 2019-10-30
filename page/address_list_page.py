@@ -11,8 +11,17 @@ class AddressListPage(BaseAction):
     # 收件人的信息
     receipt_name_feature = By.ID, "com.yunmall.lc:id/receipt_name"
 
+    # 默认标记
+    default_feature = By.ID, "com.yunmall.lc:id/address_is_default"
+
     def click_new_address(self):
         self.scroll_to_feature(self.new_address_button).click()
 
     def get_default_receipt_name_text(self):
         return self.get_text(self.receipt_name_feature)
+
+    def is_default_exist(self):
+        return self.is_feature_exist(self.default_feature)
+
+    def click_default(self):
+        self.click(self.default_feature)
