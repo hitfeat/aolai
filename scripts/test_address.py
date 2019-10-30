@@ -92,7 +92,3 @@ class TestAddress:
 
         assert not self.page.address_list.is_default_exist()
 
-
-
-
-
