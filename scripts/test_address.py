@@ -26,3 +26,9 @@ class TestAddress:
         self.page.edit_address.input_detail("2单元 302")
         self.page.edit_address.input_postal_code("100000")
         self.page.edit_address.click_default()
+        self.page.edit_address.click_region()
+        self.page.edit_address.click_save()
+
+        assert self.page.address_list.get_default_receipt_name_text() == "%s  %s" % ("zhangsan", "18888888888")
+
+
