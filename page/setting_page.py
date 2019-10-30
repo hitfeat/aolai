@@ -11,9 +11,15 @@ class SettingPage(BaseAction):
     # 设置 - 清理缓存
     clear_cache_button = By.XPATH, "//*[@text='清理缓存']"
 
+    # 设置 - 地址管理
+    address_button = By.ID, "com.yunmall.lc:id/setting_address_manage"
+
     # 设置 点击 关于百年奥莱
     def click_about_aolai(self):
         self.scroll_to_feature(self.about_aolai_button).click()
 
     def click_clear_cache(self):
         self.scroll_to_feature(self.clear_cache_button).click()
+
+    def click_address(self):
+        self.scroll_to_feature(self.address_button).click()

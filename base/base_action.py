@@ -91,7 +91,7 @@ class BaseAction:
         page_source = ""
         while True:
             try:
-                return self.driver.find_element(*feature)
+                return self.find_element(feature)
 
             except Exception:
 
